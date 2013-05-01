@@ -22,8 +22,8 @@ protected:
 public:
     Model(unsigned int textureName);
     virtual ~Model() {}
-    virtual void draw() {};
-    virtual void update() {};
+    virtual void draw() {}
+    virtual void update(){}
     virtual void accelerateRotation() {}
     virtual void decelerateRotation() {}
     

@@ -18,6 +18,7 @@
 #include "EarthMoon.h"
 
 Scene::Scene()
+: _sphi(90), _stheta(45), _sdepth(1)
 {
     this->init();
 }
@@ -100,6 +101,10 @@ void Scene::draw(void)
     
 	// Render scene.
 	this->updateLight();
+    
+    glTranslatef(0.0,0.0, -_sdepth);
+    glRotatef(-_stheta, 1.0, 0.0, 0.0);
+    glRotatef(_sphi, 0.0, 0.0, 1.0);
 
     std::vector<Model*>::iterator itr;
 	for (itr = _modelArray.begin(); itr < _modelArray.end(); ++itr)

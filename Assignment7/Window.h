@@ -29,6 +29,8 @@ public:
     static void keyboardPress(unsigned char pressedKey, int mouseXPosition, int mouseYPosition);
     static void nonASCIIKeyboardPress(int pressedKey, int mouseXPosition, int mouseYPosition);
     static void timerFunction(int value);
+    static void mouseCallback(int button, int state, int x, int y);
+    static void motionCallback(int x, int y);
     
 private:
     static Window *_currentInstance;
@@ -39,6 +41,9 @@ private:
     float _height;
     const char *_title;
     bool _animationOn;
+    int _downX;
+    int _downY;
+    bool _leftButton;
     
     Camera *_camera;
     Scene *_scene;

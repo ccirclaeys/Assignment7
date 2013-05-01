@@ -57,11 +57,38 @@ bool Window::setup(int *ac, char **av)
 	glutKeyboardFunc(Window::keyboardPress);
     glutSpecialFunc(Window::nonASCIIKeyboardPress);
 	glutTimerFunc(kMillisec, Window::timerFunction, 1);
+    glutMouseFunc(Window::mouseCallback);
+    glutMotionFunc(Window::motionCallback);
     
     _camera = new Camera(_width, _height);
     _scene = new Scene();
     
     return true;
+}
+
+void Window::mouseCallback(int button, int state, int x, int y)
+{
+    _currentInstance->_downX = x;
+    _currentInstance->_downY = y;
+    _currentInstance->_leftButton = ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN));
+    glutPostRedisplay();
+}
+
+void Window::motionCallback(int x, int y)
+{
+    if (_currentInstance->_leftButton)
+    {
+        GLfloat newSphi = _currentInstance->_scene->getSphi() + (float)(x - _currentInstance->_downX) / 4.0;
+        GLfloat newStheta = _currentInstance->_scene->getStheta() + (float)(_currentInstance->_downY - y) / 4.0;
+        
+        _currentInstance->_scene->setSphi(newSphi);
+        _currentInstance->_scene->setStheta(newStheta);
+    } // rotate
+    
+    _currentInstance->_downX = x;
+    _currentInstance->_downY = y;
+    
+    glutPostRedisplay();
 }
 
 void Window::run(void)

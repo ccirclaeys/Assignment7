@@ -30,6 +30,9 @@ class Scene
     
 private:
     std::vector<Model*> _modelArray;
+    GLfloat _sdepth;
+    GLfloat _sphi;
+    GLfloat _stheta;
     
     void init(void);
     
@@ -43,6 +46,12 @@ public:
     
     void accelerateRotation();
     void decelerateRotation();
+    
+    GLfloat getSphi() { return _sphi; }
+    void setSphi(GLfloat sphi) { _sphi = sphi; }
+    GLfloat getStheta() { return _stheta; }
+    void setStheta(GLfloat stheta) { _stheta = stheta; }
+
 };
 
 #endif /* defined(__Assignment7__Scene__) */

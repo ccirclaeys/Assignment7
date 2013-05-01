@@ -50,7 +50,6 @@ private:
     GLfloat _viewerDistance;
     GLfloat _viewerAzimuth;
     GLfloat _viewerZenith;
-
 };
 
 #endif /* defined(__Assignment7__Camera__) */
