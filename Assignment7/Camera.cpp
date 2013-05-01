@@ -66,3 +66,60 @@ void Camera::resize(int w, int h)
     glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
+
+void Camera::move(CameraMoveType move)
+{
+    switch (move)
+    {
+        case ZPOS:
+        {
+            _viewerDistance -= VIEWER_DISTANCE_INCREMENT;
+            if (_viewerDistance < MINIMUM_VIEWER_DISTANCE)
+                _viewerDistance = MINIMUM_VIEWER_DISTANCE;
+            break;
+        }
+            
+        case ZNEG:
+        {
+            _viewerDistance += VIEWER_DISTANCE_INCREMENT;
+            if (_viewerDistance > MAXIMUM_VIEWER_DISTANCE)
+                _viewerDistance = MAXIMUM_VIEWER_DISTANCE;
+            break;
+        }
+            
+        case XPOS:
+        {
+            _viewerAzimuth += VIEWER_ANGLE_INCREMENT;
+            if (_viewerAzimuth > 2 * M_PI)
+                _viewerAzimuth -= 2 * M_PI;
+            break;
+        }
+            
+        case XNEG:
+        {
+            _viewerAzimuth -= VIEWER_ANGLE_INCREMENT;
+            if (_viewerAzimuth < 0.0)
+                _viewerAzimuth += 2 * M_PI;
+            break;
+        }
+            
+        case YPOS:
+        {
+            _viewerZenith -= VIEWER_ANGLE_INCREMENT;
+            if (_viewerZenith < VIEWER_ANGLE_INCREMENT)
+                _viewerZenith = VIEWER_ANGLE_INCREMENT;
+            break;
+        }
+            
+        case YNEG:
+        {
+            _viewerZenith += VIEWER_ANGLE_INCREMENT;
+            if (_viewerZenith > M_PI - VIEWER_ANGLE_INCREMENT)
+                _viewerZenith = M_PI - VIEWER_ANGLE_INCREMENT;
+            break;
+        }
+            
+            default:
+            break;
+    }
+}

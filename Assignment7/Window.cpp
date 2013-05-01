@@ -118,6 +118,42 @@ void Window::keyboardPress(unsigned char pressedKey, int mouseXPosition, int mou
             
         case 's':
             break;
+            
+        case 'x':
+        {
+            _currentInstance->_camera->move(XPOS);
+            break;
+        }
+            
+        case 'X':
+        {
+            _currentInstance->_camera->move(XNEG);
+            break;
+        }
+            
+        case 'y':
+        {
+            _currentInstance->_camera->move(YPOS);
+            break;
+        }
+            
+        case 'Y':
+        {
+            _currentInstance->_camera->move(YNEG);
+            break;
+        }
+            
+        case 'z':
+        {
+            _currentInstance->_camera->move(ZPOS);
+            break;
+        }
+		
+        case 'Z':
+        {
+            _currentInstance->_camera->move(ZNEG);
+            break; 
+        }
         
         default:
             break;
