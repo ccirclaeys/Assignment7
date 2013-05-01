@@ -30,9 +30,10 @@ void Model::MakeImage(const char bitmapFilename[], GLuint &textureName, bool has
 	pix.readBMPFile(filename, hasAlpha);
 	pix.setTexture(textureName);
     
-    if (filePath)
+    if (filename)
     {
         free(filename);
+        filename = NULL;
     }
     
 	return;
