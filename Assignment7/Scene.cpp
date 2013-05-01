@@ -18,7 +18,6 @@
 #include "EarthMoon.h"
 
 Scene::Scene()
-: _viewerDistance(INITIAL_VIEWER_DISTANCE), _viewerAzimuth(INITIAL_VIEWER_AZIMUTH), _viewerZenith(INITIAL_VIEWER_ZENITH)
 {
     this->init();
 }
@@ -98,13 +97,6 @@ void Scene::draw(void)
     // Initialize lighting.
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, LIGHT_MODEL_AMBIENT);
 	glEnable(GL_LIGHTING);
-	
-	// Position and orient viewer.
-	gluLookAt(LOOK_AT_POSITION[0] + _viewerDistance * sin(_viewerZenith) * sin(_viewerAzimuth),
-              LOOK_AT_POSITION[1] + _viewerDistance * cos(_viewerZenith),
-              LOOK_AT_POSITION[2] + _viewerDistance * sin(_viewerZenith) * cos(_viewerAzimuth),
-              LOOK_AT_POSITION[0], LOOK_AT_POSITION[1], LOOK_AT_POSITION[2],
-              0.0, 1.0, 0.020);
     
 	// Render scene.
 	this->updateLight();

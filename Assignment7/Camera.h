@@ -9,9 +9,17 @@
 #ifndef __Assignment7__Camera__
 #define __Assignment7__Camera__
 
+#include <GLUT/GLUT.h>
+
 #include <iostream>
+#include <math.h>
 
 #define ASPECT_RATIO 1.5f
+
+const GLfloat INITIAL_VIEWER_DISTANCE    = 10;
+const GLfloat INITIAL_VIEWER_AZIMUTH     = 0.0;
+const GLfloat INITIAL_VIEWER_ZENITH      = M_PI / 2.0;
+const GLfloat LOOK_AT_POSITION[] = { 0.0, 0.0, 0.0 };
 
 class Camera
 {
@@ -24,6 +32,9 @@ public:
 private:
     int _viewportWidth;
     int _viewportHeight;
+    GLfloat _viewerDistance;
+    GLfloat _viewerAzimuth;
+    GLfloat _viewerZenith;
 
 };
 

@@ -11,15 +11,9 @@
 
 #include <GLUT/GLUT.h>
 #include <iostream>
-#include <math.h>
 #include <vector>
 
 #include "Model.h"
-
-const GLfloat INITIAL_VIEWER_DISTANCE    = 10;
-const GLfloat INITIAL_VIEWER_AZIMUTH     = 0.0;
-const GLfloat INITIAL_VIEWER_ZENITH      = M_PI / 2.0;
-const GLfloat LOOK_AT_POSITION[] = { 0.0, 0.0, 0.0 };
 
 // Lighting Constants
 const GLfloat LIGHT_0_POSITION[]    = { 1.0, 0.0, 0.0, 0.0};
@@ -35,10 +29,6 @@ class Scene
 {
     
 private:
-    GLfloat _viewerDistance;
-    GLfloat _viewerAzimuth;
-    GLfloat _viewerZenith;
-    
     std::vector<Model*> _modelArray;
     
     void init(void);
